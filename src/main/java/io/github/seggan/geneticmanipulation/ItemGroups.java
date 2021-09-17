@@ -13,14 +13,19 @@ public final class ItemGroups {
 
     public static final ItemGroup GENES = new SubGroup(
         "genes",
-        new CustomItemStack(Material.RED_DYE, "&fGenes")
+        new CustomItemStack(Material.RED_DYE, "&fGenetic Manipulation - Genes")
+    );
+
+    public static final ItemGroup GENERAL = new SubGroup(
+        "general",
+        new CustomItemStack(Material.STICK, "&fGenetic Manipulation - General")
     );
 
     void setup() {
         MultiGroup group = new MultiGroup(
             "genetic_manipulation",
             new CustomItemStack(Material.PRISMARINE_CRYSTALS, "&fGenetic Manipulation"),
-            GENES
+            GENERAL, GENES
         );
         group.register(GeneticManipulation.instance());
     }

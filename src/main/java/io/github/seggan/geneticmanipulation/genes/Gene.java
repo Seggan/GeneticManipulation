@@ -4,6 +4,8 @@ import io.github.seggan.geneticmanipulation.GeneticManipulation;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.CommonPatterns;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Mob;
 import org.bukkit.persistence.PersistentDataHolder;
 
@@ -11,9 +13,11 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.annotation.Nonnull;
 
 @Getter
@@ -49,7 +53,7 @@ public abstract class Gene {
     }
 
     public static void setGenes(@NonNull PersistentDataHolder holder, @NonNull List<Gene> genes) {
-        List<String> ids = new ArrayList<>();
+        List<String> ids = new ArrayList<>(genes.size());
         genes.forEach(g -> ids.add(g.id));
         PersistentDataAPI.setString(holder, GENES_KEY, String.join(";", ids));
     }
@@ -74,4 +78,5 @@ public abstract class Gene {
     }
 
     public abstract void apply(@NonNull Mob mob);
+    public abstract boolean isFoundIn(@NonNull Mob mob);
 }
