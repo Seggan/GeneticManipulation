@@ -13,8 +13,7 @@ public final class Items {
         "DNA",
         Material.WHITE_DYE,
         "&fDNA",
-        "",
-        "&7The essence of life"
+        "The essence of life"
     );
 
     public static final SlimefunItemStack SYRINGE = new SlimefunItemStack(

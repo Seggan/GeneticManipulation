@@ -77,6 +77,6 @@ public abstract class Gene {
         }
     }
 
-    public abstract void apply(@NonNull Mob mob);
-    public abstract boolean isFoundIn(@NonNull Mob mob);
+    public abstract void apply(@NonNull Mob mob, @NonNull EntityType type);
+    public abstract boolean isFoundIn(@NonNull Mob mob, @NonNull EntityType type);
 }

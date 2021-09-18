@@ -6,6 +6,7 @@ import io.github.seggan.geneticmanipulation.RecipeTypes;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.apache.commons.lang.Validate;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Mob;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -27,8 +28,8 @@ public class DNA extends SlimefunItem {
         lore = lore == null ? new ArrayList<>() : lore;
         lore.clear();
 
+        lore.add("The essence of life");
         lore.add("");
-        lore.add(ChatColor.GRAY + "The essence of life");
 
         for (Gene gene : genes) {
             lore.add(ChatColor.GRAY + gene.name());
@@ -39,8 +40,9 @@ public class DNA extends SlimefunItem {
 
     public static ItemStack generate(@NonNull Mob mob) {
         List<Gene> added = new ArrayList<>();
+        EntityType type = mob.getType();
         for (Gene gene : Gene.allGenes().values()) {
-            if (gene.isFoundIn(mob)) {
+            if (gene.isFoundIn(mob, type)) {
                 added.add(gene);
             }
         }

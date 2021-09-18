@@ -52,11 +52,11 @@ public final class BaseGene extends Gene {
     }
 
     @Override
-    public void apply(@NonNull Mob mob) {
+    public void apply(@NonNull Mob mob, @NonNull EntityType type) {
     }
 
     @Override
-    public boolean isFoundIn(@NonNull Mob mob) {
-        return mob.getType() == this.entityType;
+    public boolean isFoundIn(@NonNull Mob mob, @NonNull EntityType type) {
+        return type == this.entityType;
     }
 }
